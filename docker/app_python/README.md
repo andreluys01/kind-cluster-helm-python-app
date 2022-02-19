@@ -12,7 +12,7 @@ Attention:
 
 ```sh
 
-cd lab-magnata/app_python
+cd docker/app_python
 
 docker build -f Dockerfile -t andreluys01/app-python:1.0.0 .
 docker run -i -t --name myapp-python -p 81:8001 -p 82:8002 andreluys01/app-python:1.0.0
