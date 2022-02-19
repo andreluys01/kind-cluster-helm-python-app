@@ -1,26 +1,28 @@
-# Instructions for downloading and compiling the Docker image
+# Instruções para baixar e compilar a imagem Docker 
 
-Attention:
+Atenção:
 
-1) The application run here was developed by Andreyev Melo and is very well documented in the links below.
-
+1) A aplicação python foi desenvolvida por Andreyev Melo e esta documentada em:
 * https://github.com/andreyev/prometheus_hands-on/tree/demo/demo
 
-2) Install **Docker** .
+2) Instale o **Docker** .
 
-3) Start the containers.
+3) Compile a imagem Docker
 
 ```sh
-
 cd docker/app_python
 
 docker build -f Dockerfile -t andreluys01/app-python:1.0.0 .
+```
+4) Inicie o container:
+
+```sh
 docker run -i -t --name myapp-python -p 81:8001 -p 82:8002 andreluys01/app-python:1.0.0
 ```
 
-4) Access the app in the URL http://localhost:81 or http://localhost:82  (for HTTP).
+5) Acesse a aplicação na URL http://localhost:81 ou http://localhost:82  (para HTTP).
 
-5) Stop the containers.
+6) Pare o container.
 
 ```sh
 docker stop myapp-python
