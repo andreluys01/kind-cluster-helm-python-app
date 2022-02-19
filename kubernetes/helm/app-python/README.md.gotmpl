@@ -1,0 +1,83 @@
+{{ template "chart.header" . }}
+{{ template "chart.typeBadge" . }} {{ template "chart.versionBadge" . }}
+
+{{ template "chart.description" . }}
+
+# Prerequisitos 
+
+## Kubectl
+
+Instale o comando:  ``kubectl``
+
+```bash
+curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+
+chmod +x ./kubectl
+
+sudo mv ./kubectl /usr/local/bin/kubectl
+
+kubectl version --client
+```
+
+## Helm
+
+Instale o comando: ``helm``
+
+```bash
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+
+chmod 700 get_helm.sh
+
+./get_helm.sh
+
+helm version
+```
+
+# Instale a aplicão app-python:
+
+* Primeiro acesse o cluster kubernetes:
+
+* Mude os valores de acordo com a necessidade do ambiente no arquivo ``{{ template "chart.name" . }}/values.yaml``.
+
+* Crie o namespace ``{{ template "chart.name" . }}``.
+
+```bash
+kubectl create namespace {{ template "chart.name" . }}
+```
+
+* Teste a instalação com o comando:
+
+```bash
+helm upgrade --install {{ template "chart.name" . }} -f {{ template "chart.name" . }}/values.yaml {{ template "chart.name" . }}/ -n {{ template "chart.name" . }} --dry-run
+```
+
+Acesse aplicação com o seguinte comando:
+
+```bash
+kubectl port-forward svc/app-python 8080:81 -n app-python 
+```
+* Para instalar/atualizar a aplicação use o seguinte comando: 
+
+```bash
+helm upgrade --install {{ template "chart.name" . }} -f {{ template "chart.name" . }}/values.yaml {{ template "chart.name" . }}/ -n {{ template "chart.name" . }}
+```
+
+* Liste todos os recursos criados pelo helm chart:
+
+```bash
+helm list all -n '{{ template "chart.name" . }}'
+```
+
+## Desinstalando a aplicação
+
+Para desinstalar a aplicação execute o seguinte comando:
+
+```bash
+helm uninstall {{ template "chart.name" . }} -n {{ template "chart.name" . }}
+```
+
+## Parâmetros
+
+Os seguintes parâmetros podem ser configurados no arquivo values.yaml.
+
+{{ template "chart.valuesTable" . }}

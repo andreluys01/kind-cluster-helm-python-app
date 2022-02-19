@@ -1,0 +1,6 @@
+apiVersion: v2
+name: app-python
+description: My Helm chart for install app-python
+type: application
+version: 1.0.0
+appVersion: "1.0.0"
