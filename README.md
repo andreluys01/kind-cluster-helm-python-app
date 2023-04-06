@@ -1,6 +1,6 @@
-# Case SRE Descomplica
+# pravaler/challenge
 
-Desafio SRE Descomplica.
+Desafio SRE pravaler/challenge.
 
 # Criando um cluster kubernetes com o kind
 
