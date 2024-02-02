@@ -1,7 +1,3 @@
-# pravaler/challenge
-
-Desafio SRE pravaler/challenge.
-
 # Criando um cluster kubernetes com o kind
 
 Execute os seguintes comandos para instalar o kind (Kubernetes in Docker), indicado apenas para ambiente de desenvolvimento e estudo.
